@@ -1,0 +1,35 @@
+(1) Provide a link to your code.
+TODO - Preferably GitHub
+
+(2) List dataset(s) you used.
+
+I used provided ear dataset, and did evaluation on both - perfectly cropped ears and on my own cutouts that I obtained from previous task using YoloV4-tiny net (IOU = 80).
+I used all dataset images by concatenating train and test set.
+
+(3) List your recognition approaches.
+
+- Pixel-only approach with and without sobel edge detection = 2 approaches, using cosine and jensen-shannon metric (4 results)
+- LBP without histogram with and without sobel edge detection = 2 approaches, using cosine and jensen-shannon metric (4 results)
+- LBP with different parameters (2) with and without sobel edge detection (2) = 4 approaches, using cosine and jensen-shannon metric (8 results)
+- Hog with different parameters (2) with and without sobel edge detection (2) = 4 approaches, using cosine and jensen-shannon metric (8 results)
+
+(4)
+
+(Pixel2Pixel)
+Pix2Pix: An input image is converted to grayscale, resized to 64x64 and normalized. Then it is converted from 2D to 1D vector with size 4096. Each element represents a value of a single pixel.
+
+Pix2Pix + Sobel: An extra step with sobel edge detection operation is made on an input image. 
+
+(Local binary patterns)
+LBP without histogram: An input image is converted to grayscale, resized to 64x64 and normalized. 
+Then we do LBP feature extraction without computing histogram which gives us a vector with size 4096.
+
+LBP with histogram: An input image is converted to grayscale, resized to 64x64 and normalized. 
+Then we do LBP feature extraction and then computing histogram with N bins, which we also normalize. 
+
+LBP_0: An LBP approach with following parameters: LBP(points=8, radius=1, size=64, window_stride=8, bins=8) and output feature vector with size of 512.
+LBP_1: An LBP approach with following parameters: LBP(points=8, radius=1, size=64, window_stride=32, bins=128) and output feature vector with size of 512.
+
+(Histogram of oriented gradients)
+Hog_0: A Hog approach with following parameters (cells_block=8, pix_cell=8) and output feature vector with size of 512.
+Hog_1: A Hog approach with following parameters (cells_block=2, pix_cell=12) and output feature vector with size of 512.
